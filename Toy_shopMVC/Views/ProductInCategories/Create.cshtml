@@ -1,0 +1,34 @@
+﻿@model Toy_shopMVC.Models.ProductInCategory
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CodeOfProduct" class="control-label"> Товар</label>
+                <select asp-for="CodeOfProduct" class ="form-control" asp-items="ViewBag.CodeOfProduct"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="CodeOfCategory" class="control-label">Категория</label>
+                <select asp-for="CodeOfCategory" class ="form-control" asp-items="ViewBag.CodeOfCategory"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Добавить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Назад</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

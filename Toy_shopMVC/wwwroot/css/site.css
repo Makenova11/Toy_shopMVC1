@@ -1,0 +1,519 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/montserrat-v15-cyrillic-regular.woff2') format('woff2'), url('../fonts/montserrat-v15-cyrillic-regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    src: url('../fonts/montserrat-v15-cyrillic-500.woff2') format('woff2'), url('../fonts/montserrat-v15-cyrillic-500.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    src: url('../fonts/montserrat-v15-cyrillic-600.woff2') format('woff2'), url('../fonts/montserrat-v15-cyrillic-600.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../fonts/montserrat-v15-cyrillic-700.woff2') format('woff2'), url('../fonts/montserrat-v15-cyrillic-700.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 800;
+    src: url('../fonts/montserrat-v15-cyrillic-800.woff2') format('woff2'), url('../fonts/montserrat-v15-cyrillic-800.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 900;
+    src: url('../fonts/montserrat-v15-cyrillic-900.woff2') format('woff2'), url('../fonts/montserrat-v15-cyrillic-900.woff') format('woff');
+}
+
+* {
+    box-sizing: border-box;
+}
+
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+    color: #0366d6;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+ul {
+    list-style-type: none;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    font-family: 'Montserrat', sans-serif;
+}
+
+.header-layout {
+    margin-bottom: 30px;
+}
+
+.header-container {
+    align-items: center;
+}
+
+.section-hero__title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 40px;
+    letter-spacing: 0.15em;
+    color: #525252;
+    margin-bottom: 35px;
+}
+
+.navbar {
+    min-height: 70px;
+}
+
+.navbar-nav-div {
+    flex-direction: row-reverse;
+}
+
+.navbar-brand {
+    margin-right: 70px;
+    padding: 0;
+}
+
+.navbar-nav-list {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-item {
+    font-weight: 700;
+    font-size: 16px;
+    position: relative;
+    margin-right: 10px;
+}
+
+.nav-link {
+    font-size: 16px;
+}
+
+.nav-link, .nav-link::after {
+    transition: color .2s ease;
+}
+
+.nav-link:active {
+    color: mediumpurple;
+}
+
+.nav-link:hover {
+    color: greenyellow;
+}
+
+.nav-link:hover:after {
+    content: " ";
+    display: inline-block;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    position: absolute;
+    align-items: center;
+    background-color: greenyellow;
+    vertical-align: bottom;
+    height: 3px;
+}
+
+.nav-link:active:after {
+    background-color: mediumpurple;
+}
+
+.nav-item-korzina {
+    position: relative;
+    padding-right: 30px;
+    background: url(../img/5a364b752c0633.9984354215135077011803.png) no-repeat;
+    background-size: 30px;
+    background-position: right;
+}
+
+.nav-link-korzina::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.swiper-container {
+    max-width: 880px;
+    min-height: 337px;
+    margin-bottom: 45px;
+}
+
+.swiper-slide {
+    min-height: 337px;
+    background: rgba(7, 239, 31, 0.2);
+    border-radius: 10px;
+    background-repeat: no-repeat;
+    background-size: 880px;
+}
+
+.swiper-slide1 {
+    background-image: url('../img/Frame1.png');
+    background-size: 880px;
+}
+
+.swiper-slide2 {
+    background-image: url(../img/Frame2.png);
+    background-size: 880px;
+}
+
+.swiper-slide3 {
+    background-image: url(../img/Frame3.png);
+}
+
+.sectionNewItems__container {
+    margin-bottom: 40px;
+}
+
+.sectionNewItems__title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 40px;
+    letter-spacing: 0.15em;
+    color: #525252;
+    margin-bottom: 40px;
+}
+
+.sectionNewItems__list {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+}
+
+.sectionNewItems__item-link {
+    color: #525252;
+}
+
+.sectionNewItems__item-link:active {
+    color: indigo;
+}
+
+.sectionNewItems__item {
+    padding: 240px 25px 25px;
+    width: 280px;
+    min-height: 340px;
+    background: #FFFFFF;
+    border: 1px solid #525252;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    letter-spacing: 0.15em;
+    color: #525252;
+    background-repeat: no-repeat;
+    background-size: 100px;
+    background-position: 40px 20px;
+}
+
+.sectionNewItems__item:first-child {
+    background-image: url('../img/image4.png');
+    background-size: 200px;
+}
+
+.sectionNewItems__item:nth-child(2) {
+    background-image: url('../img/image5.png');
+    background-position-x: 50px;
+    background-size: 180px;
+}
+
+.sectionNewItems__item:nth-child(3) {
+    background-image: url('../img/image6.png');
+    background-position-x: 65px;
+    background-position-y: 15px;
+    background-size: 150px;
+}
+
+.footer {
+    background-color: rgba(7, 239, 31, 0.2);
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    flex: 0 0 auto;
+    min-height: 100px;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.15em;
+    color: #525252;
+}
+
+.footer__container {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.footer__NavbarBrand {
+    display: block;
+    margin-bottom: 7px;
+}
+
+.footer__zakaz-link {
+    display: block;
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
+
+.footer__description {
+    display: flex;
+    justify-content: space-between;
+}
+
+.container {
+    padding-right: 130px;
+    padding-left: 130px;
+}
+
+/* sectionGames */
+.sectionGames {
+    min-height: 100vh;
+    background: rgba(21, 152, 226, 0.2);
+}
+
+.sectionGames__title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 40px;
+    letter-spacing: 0.15em;
+    color: #525252;
+    margin-bottom: 40px;
+}
+
+.list-div-index-page {
+    align-items: center;
+    
+}
+
+.sectionGames__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+    margin-bottom: 30px;
+}
+
+.sectionGames__item-link {
+    color: #525252;
+}
+
+.sectionGames__item-link:active {
+    color: indigo;
+}
+
+.sectionGames__item {
+    position: relative;
+    padding: 70px 20px;
+    width: 390px;
+    min-height: 200px;
+    background: #FFFFFF;
+    border: 1px solid #1598E2;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 22px;
+    text-align: left center;
+    letter-spacing: 0.15em;
+    color: #525252;
+    background-repeat: no-repeat;
+    background-size: 140px;
+    background-position-x: 240px;
+    background-position-y: center;
+}
+
+.sectionGames__item-link:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.sectionGames__item:not(:nth-child(2n)) {
+    margin-right: 20px;
+}
+
+.sectionGames__item:not(:nth-child(7n+1)) {
+    margin-bottom: 20px;
+}
+
+.sectionGames__item:first-child {
+    background-image: url('../img/image4.png');
+}
+
+.sectionGames__item:nth-child(2) {
+    background-image: url('../img/image7.png');
+}
+
+.sectionGames__item:nth-child(3) {
+    background-image: url('../img/image8.png');
+}
+
+.sectionGames__item:nth-child(4) {
+    background-image: url('../img/image9.png');
+}
+
+.sectionGames__item:nth-child(5) {
+    background-image: url('../img/image10.png');
+}
+
+.sectionGames__item:nth-child(6) {
+    background-image: url('../img/image11.png');
+}
+
+.sectionGames__item:nth-child(7) {
+    background-image: url('../img/image12.png');
+}
+
+.sectionGames__item:nth-child(8) {
+    background-image: url('../img/image13.png');
+}
+
+
+@media (max-width: 1199px) {
+    .sectionNewItems__item {
+        width: 210px;
+    }
+
+    .swiper-slide {
+        background-size: 700px;
+    }
+
+    .sectionNewItems__item {
+        padding: 240px 25px 25px;
+        background-size: 80px;
+        background-position: 10px 10px;
+    }
+
+    .sectionNewItems__item:nth-child(2) {
+        background-position: 10px 10px;
+    }
+
+    .sectionNewItems__item:nth-child(3) {
+        background-position: 10px 10px;
+        }
+}
+
+.basket {
+    min-height: 100vh;
+}
+
+@media (max-width: 991px) {
+    .container {
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+
+    .footer__description {
+        flex-direction: column;
+    }
+
+    .sectionNewItems__list {
+        flex-direction: column;
+    }
+
+    .sectionNewItems__item {
+        width: 280px;
+    }
+
+    .sectionNewItems__item:not(:last-child) {
+        margin-bottom: 50px;
+    }
+
+    .sectionNewItems__item:not(:nth-child(2n)) {
+        margin-right: 50px;
+    }
+
+    .sectionNewItems__item:first-child {
+        background-size: 200px;
+    }
+
+    .sectionNewItems__item:nth-child(2) {
+        background-position-x: 50px;
+        background-size: 180px;
+    }
+
+    .sectionNewItems__item:nth-child(3) {
+        background-position-x: 65px;
+        background-position-y: 15px;
+        background-size: 150px;
+    }
+}

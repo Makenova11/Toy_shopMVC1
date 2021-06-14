@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Toy_shopMVC.Models.Product>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<p>
+    <a asp-action="Create">Добавить продукт</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Наименование
+            </th>
+            <th>
+                Цена
+            </th>
+            <th>
+                Количество
+            </th>
+            <th>
+                Производитель
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InStock)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdManufacturerNavigation.Name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.CodeOfProduct">Редактировать</a> |
+                <a asp-action="Delete" asp-route-id="@item.CodeOfProduct">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

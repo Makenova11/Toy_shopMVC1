@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Toy_shopMVC.Models.Order>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>История заказов</h1>
+
+<p>
+    <a asp-action="Create">Добавить</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Итоговая сумма
+            </th>
+            <th>
+                Дата заказа
+            </th>
+            <th>
+                Клиент
+            </th>
+            <th>
+                Телефон
+            </th>
+            <th>
+                Комментарий
+            </th>
+            <th>
+                Почта
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CodeProductInBasketNavigation)
+            </th>
+            <th>
+                Статус заказа
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfCreation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodeProductInBasketNavigation.CodeProductInBasket)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodeStatusNavigation.Name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.CodeOrder">Редактировать</a> |
+                <a asp-action="Delete" asp-route-id="@item.CodeOrder">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

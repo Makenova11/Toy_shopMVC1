@@ -1,0 +1,31 @@
+﻿@model Toy_shopMVC.Models.ProductInBasket
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+
+<h3>Удалить данный товар из корзины?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Количество
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+        <dt class = "col-sm-2">
+            Товар
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CodeOfProductNavigation.Name)
+        </dd class>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="CodeProductInBasket" />
+        <input type="submit" value="Удалить" class="btn btn-danger" /> |
+        <a asp-action="Index">Назад</a>
+    </form>
+</div>

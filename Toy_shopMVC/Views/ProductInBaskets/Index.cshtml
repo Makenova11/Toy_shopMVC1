@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Toy_shopMVC.Models.ProductInBasket>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="basket">
+    <h1>Корзина</h1>
+
+    <p>
+        <a asp-action="Create">Добавить товары в корзину</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Товар
+                </th>
+                <th>
+                    Количество
+                </th>
+                <th>
+                    Цена (руб.)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CodeOfProductNavigation.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Quantity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CodeOfProductNavigation.Price)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.CodeProductInBasket">Редактировать</a> |
+                        <a asp-action="Delete" asp-route-id="@item.CodeProductInBasket">Удалить</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div>
+        Итого: @ViewBag.Sum
+        <p><a asp-action="Create" asp-route-id="Orders">Оформить заказ</a> </p>
+    </div>
+</div>

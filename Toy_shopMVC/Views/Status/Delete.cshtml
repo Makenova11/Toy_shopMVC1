@@ -1,0 +1,25 @@
+﻿@model Toy_shopMVC.Models.Status
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+
+<h3>Вы действительно хотите удалить этот статус?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Наименование
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="CodeOfStatus" />
+        <input type="submit" value="Удалить" class="btn btn-danger" /> |
+        <a asp-action="Index">Назад</a>
+    </form>
+</div>

@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Toy_shopMVC.Models.ProductInCategory>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Продукты</h1>
+
+<p>
+    <a asp-action="Create">Добавить товар в категорию</a>
+    <a asp-action="Edit">Распределить товар по категориям</a>
+
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Категория
+            </th>
+            <th>
+                Товар
+            </th>
+            <th>
+                Цена
+            </th>
+            <th>
+                Наличие
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CodeOfCategoryNavigation.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CodeOfProductNavigation.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CodeOfProductNavigation.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CodeOfProductNavigation.InStock)
+                </td>
+                <td>
+                    @*@Html.ActionLink("Добавить в корзину", "ToBasket", new { id = item.CodeOfProduct }) тоже рабочий вариант*@
+                    <form asp-action="ToBasket" asp-route-id="@item.CodeOfProduct">
+                        <div class="form-group">
+                            <input type="submit" value="Добавить в корзину" class="btn btn-primary" />
+                        </div>
+                    </form>
+                    @*<form asp-action="Edit" asp-route-id="@item.CodeOfProduct" asp-controller="Products">
+                            <div class="form-group">
+                                <input type="submit" value="Редактировать" class="btn btn-primary" />
+                            </div>
+                        </form>*@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

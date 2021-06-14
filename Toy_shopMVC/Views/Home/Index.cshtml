@@ -1,0 +1,69 @@
+﻿@{
+    ViewData["Title"] = "Забава, магазин игрушек! - Главная";
+}
+
+<div class="text-center" hidden>
+    <h1 class="display-4">Welcome</h1>
+</div>
+
+<div class="sections">
+    <section class="section-hero">
+        <h1 class="section-hero__title titles">Мы дарим мечту!</h1>
+        @*<p><a class="btn btn-default" @Html.ActionLink("Роли", "Index", "Role")</a></p>
+            <li>@Html.ActionLink("Роли", "Index", "Role")</li>*@
+
+        <div class="swiper-container">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+                <!-- Slides -->
+                <div class="swiper-slide swiper-slide1"></div>
+                <div class="swiper-slide swiper-slide2"></div>
+                <div class="swiper-slide swiper-slide3"></div>
+                ...
+            </div>
+            <!-- If we need pagination -->
+            <div class="swiper-pagination"></div>
+
+            <!-- If we need navigation buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+
+        </div>
+    </section>
+
+    <script>
+    const swiper = new Swiper('.swiper-container', {
+      // Optional parameters
+      loop: true,
+
+      // If we need pagination
+      pagination: {
+        el: '.swiper-pagination',
+      },
+
+      // Navigation arrows
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+    </script>
+
+    <section class="sectionNewItems">
+        <div class="sectionNewItems__container containers">
+            <h2 class="sectionNewItems__title titles">Новинки</h2>
+            <ul class="sectionNewItems__list">
+                <li class="sectionNewItems__item">
+                    <a class="sectionNewItems__item-link" href="#">Кукла На-на <br> 750 руб.</a>
+                </li>
+
+                <li class="sectionNewItems__item">
+                    <a class="sectionNewItems__item-link" href="#">Набор Hotweels вулкан <br> 4 499 руб.</a>
+                </li>
+
+                <li class="sectionNewItems__item">
+                    <a class="sectionNewItems__item-link" href="#">Набор Hotweels Мега гараж <br> 1 750 руб.</a>
+                </li>
+            </ul>
+        </div>
+    </section>

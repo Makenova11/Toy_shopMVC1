@@ -1,0 +1,19 @@
+﻿@model Toy_shopMVC.Models.ProductInBasket
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<h4>Товар добавлен</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="ToBasket">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input type="submit" value="Добавить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
