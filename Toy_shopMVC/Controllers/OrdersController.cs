@@ -21,7 +21,8 @@ namespace Toy_shopMVC.Controllers
         // GET: Orders
         public async Task<IActionResult> Index()
         {
-            var toy_shopContext = _context.Orders.Include(o => o.CodeProductInBasketNavigation).Include(o => o.CodeStatusNavigation);
+            var toy_shopContext = _context.Orders.Include(o => o.CodeProductInBasketNavigation)
+                .ThenInclude(x=>x.CodeOfProductNavigation).Include(o => o.CodeStatusNavigation);
             return View(await toy_shopContext.ToListAsync());
         }
 
@@ -46,7 +47,7 @@ namespace Toy_shopMVC.Controllers
         }
 
         // GET: Orders/Create
-        public IActionResult Create()
+        public IActionResult Create(long? id)
         {
             ViewData["CodeProductInBasket"] = new SelectList(_context.ProductInBaskets, "CodeProductInBasket", "CodeProductInBasket");
             ViewData["CodeStatus"] = new SelectList(_context.Statuses, "CodeOfStatus", "Name");
@@ -58,10 +59,16 @@ namespace Toy_shopMVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CodeOrder,CodeProductInBasket,Sum,DateOfCreation,CodeStatus,Name,Phone,Comment,Email")] Order order)
+        public async Task<IActionResult> Create([Bind("CodeOrder,CodeProductInBasket,Sum,DateOfCreation,CodeStatus,Name,Phone,Comment,Email")] Order order, long id)
         {
             if (ModelState.IsValid)
             {
+                order.CodeProductInBasket = id;
+                order.Sum = (_context.ProductInBaskets.Where(x => x.CodeProductInBasket == id)
+                    .Select(x => x.CodeOfProductNavigation.Price).FirstOrDefault()) *
+                    (_context.ProductInBaskets.Where(x => x.CodeProductInBasket == id)
+                    .Select(x => x.Quantity).FirstOrDefault());
+                order.CodeStatus = 0;
                 order.DateOfCreation = DateTime.Now;
                 _context.Add(order);
                 await _context.SaveChangesAsync();

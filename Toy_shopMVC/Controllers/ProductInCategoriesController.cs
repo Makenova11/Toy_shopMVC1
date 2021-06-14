@@ -53,18 +53,19 @@ namespace Toy_shopMVC.Controllers
                     _context.ProductInBaskets.Remove((ProductInBasket)delete);
                     productInCategory.CodeOfProduct = query[i].Element;
                     productInCategory.Quantity = query[i].Counter;
-                    var querySum = _context.ProductInBaskets.GroupBy(x => x.CodeOfProduct)
-                        .Select(y => new { Prod = y.Key, Counter = y.Count() })
-                        .ToList();
-                    var list = querySum; // sum 6 
-                    foreach(var j in querySum)
-                    {
-                        decimal price = _context.Products.Where(x=>x.CodeOfProduct==j.Prod).Select(x=>x.Price).FirstOrDefault();
-                        sum1 += price * j.Counter;
-                    }
-                    ViewBag.Sum = sum1;
-                    ViewData["Sum"] = sum1;
-                    TempData["Sum"] = sum1;
+                    //сумма заказа
+                    //var querySum = _context.ProductInBaskets.GroupBy(x => x.CodeOfProduct)
+                    //    .Select(y => new { Prod = y.Key, Counter = y.Count() })
+                    //    .ToList();
+                    //var list = querySum; // sum 6 
+                    //foreach(var j in querySum)
+                    //{
+                    //    decimal price = _context.Products.Where(x=>x.CodeOfProduct==j.Prod).Select(x=>x.Price).FirstOrDefault();
+                    //    sum1 += price * j.Counter;
+                    //}
+                    //ViewBag.Sum = sum1;
+                    //ViewData["Sum"] = sum1;
+                    //TempData["Sum"] = sum1;
                     await _context.SaveChangesAsync();
                 }
                 return RedirectToAction(nameof(Index));

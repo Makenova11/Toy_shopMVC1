@@ -12,9 +12,7 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
-                Итоговая сумма
-            </th>
+
             <th>
                 Дата заказа
             </th>
@@ -31,7 +29,16 @@
                 Почта
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CodeProductInBasketNavigation)
+                Товар
+            </th>
+            <th>
+                Цена
+            </th>
+            <th>
+                Количество
+            </th>
+            <th>
+                Сумма
             </th>
             <th>
                 Статус заказа
@@ -42,9 +49,7 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Sum)
-            </td>
+
             <td>
                 @Html.DisplayFor(modelItem => item.DateOfCreation)
             </td>
@@ -61,7 +66,16 @@
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CodeProductInBasketNavigation.CodeProductInBasket)
+                @Html.DisplayFor(modelItem => item.CodeProductInBasketNavigation.CodeOfProductNavigation.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodeProductInBasketNavigation.CodeOfProductNavigation.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodeProductInBasketNavigation.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sum)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CodeStatusNavigation.Name)

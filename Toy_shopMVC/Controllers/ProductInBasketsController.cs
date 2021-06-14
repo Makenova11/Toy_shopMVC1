@@ -67,16 +67,41 @@ namespace Toy_shopMVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CodeProductInBasket,CodeOfProduct,Quantity")] ProductInBasket productInBasket)
+        public IActionResult Create([Bind("CodeProductInBasket,CodeOfProduct,Quantity")] ProductInBasket productInBasket)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(productInBasket);
-                await _context.SaveChangesAsync();
+                _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             ViewData["CodeOfProduct"] = new SelectList(_context.Products, "CodeOfProduct", "Name", productInBasket.CodeOfProduct);
             return View(productInBasket);
+        }
+
+        [HttpGet]
+        public IActionResult ToOrder(long? id)
+        {
+            //ViewData["CodeProductInBasket"] = new SelectList(_context.ProductInBaskets, "CodeProductInBasket", "CodeProductInBasket");
+            //ViewData["CodeStatus"] = new SelectList(_context.Statuses, "CodeOfStatus", "Name");
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult ToOrder([Bind("CodeProductInBasket,Sum,DateOfCreation,CodeStatus,Name,Phone,Comment,Email")] Order order, long id)
+        {
+            //CodeOrder,
+            order.CodeProductInBasket = id;
+            order.Sum = (_context.ProductInBaskets.Where(x => x.CodeProductInBasket == id)
+                .Select(x => x.CodeOfProductNavigation.Price).FirstOrDefault()) *
+                (_context.ProductInBaskets.Where(x => x.CodeProductInBasket == id)
+                .Select(x=>x.Quantity).FirstOrDefault());
+            order.DateOfCreation = DateTime.Now;
+            order.CodeStatus = 0;
+            _context.Add(order);
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: ProductInBaskets/Edit/5

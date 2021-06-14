@@ -28,26 +28,33 @@
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CodeOfProductNavigation.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Quantity)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CodeOfProductNavigation.Price)
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.CodeProductInBasket">Редактировать</a> |
-                        <a asp-action="Delete" asp-route-id="@item.CodeProductInBasket">Удалить</a>
-                    </td>
-                </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CodeOfProductNavigation.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CodeOfProductNavigation.Price)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.CodeProductInBasket">Редактировать</a> |
+                    <a asp-action="Delete" asp-route-id="@item.CodeProductInBasket">Удалить</a> |
+                    @*<a asp-action="ToOrder" asp-route-id="@item.CodeProductInBasket"asp-controller="ProductInBaskets">Заказать прямо сейчас</a>|*@
+                    <a asp-action="Create" asp-route-id="@item.CodeProductInBasket" asp-controller="Orders">Заказать прямо сейчас</a>
+                </td>
+                @*<form asp-action="ToOrder" asp-route-id="@item.CodeProductInBasket">
+                    <div class="form-group">
+                        <input type="submit" value="Оформить" class="btn btn-primary" />
+                    </div>
+                </form>*@
+            </tr>
             }
         </tbody>
     </table>
     <div>
-        Итого: @ViewBag.Sum
-        <p><a asp-action="Create" asp-route-id="Orders">Оформить заказ</a> </p>
+        @*Итого: @ViewBag.Sum*@
+        
     </div>
 </div>
